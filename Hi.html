@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blue and Pink Blending Background</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, blue, pink);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            line-height: 1.2;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #FF69B4;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #FF1493;
+            transform: translateY(-2px);
+        }
+
+        #new-text {
+            display: none;
+            font-family: cursive;
+            font-size: 48px;
+            color: white;
+            animation: fadeIn 1s ease-in-out, fadeOut 1s ease-in-out 4s forwards;
+        }
+
+        #joke-text {
+            display: none;
+            font-family: cursive;
+            font-size: 36px;
+            color: #FF69B4;
+            animation: bounceIn 1s ease, fadeOut 1s ease-in-out 7s forwards;
+        }
+        
+        #final-text {
+            display: none;
+            font-family: cursive;
+            font-size: 37px; 
+            color: white;
+            animation: fadeIn 1s ease-in-out 8s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        .button-disappear {
+            animation: fadeOutShrink 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeOutShrink {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hi Love.<br>Tapos ka na ba magsampay? I have something for you.</h1>
+    <button id="myButton" onclick="showNewText()">Click</button>
+    <h1 id="new-text">Kiss po tayo</h1>
+    <h1 id="joke-text">Joke lang</h1>
+    <h1 id="final-text">Alam mo na mahal kita. Sorry because alam kong IT ka and alam kong alam mo kung paano ko itong website ginawa. I love you and alam kong ma h-humbled ako pag nasa college kana kasi mas magaling kana sa coding.<br><br>
+        I love every part of you. Yung kilay mong pataas, yung eyeroll mo pag annoyed, yung nginig ng kamay mo tuwing kinakabahan, the way you speak when you are presenting, yung mga bulong mo, and more!<br><br>
+        Mahal na mahal kita. 
+    </h1>
+
+    <script>
+        function showNewText() {
+            const oldText = document.querySelector("h1");
+            const newText = document.getElementById("new-text");
+            const jokeText = document.getElementById("joke-text");
+            const finalText = document.getElementById("final-text");
+            const button = document.getElementById("myButton");
+
+            oldText.style.display = "none";
+            newText.style.display = "block";
+
+            button.classList.add("button-disappear");
+            button.addEventListener("animationend", () => {
+                button.remove();
+            });
+
+            setTimeout(() => {
+                newText.style.display = "none";
+                jokeText.style.display = "block";
+            }, 4000); // 4 seconds
+
+            setTimeout(() => {
+                jokeText.style.display = "none";
+                finalText.style.display = "block";
+            }, 8000); // 8 seconds
+        }
+    </script>
+
+</body>
+</html>
+
